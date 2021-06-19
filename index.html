@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="styles.css" rel="stylesheet" />
+
+  <title>Hello, world!</title>
+  <style>
+    body {
+      background-color: teal;
+    }
+
+    #myDiv {
+      background-color: red;
+      box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+      border-style: solid;
+      display: inline-block;
+    }
+  </style>
+</head>
+
+<body>
+  <input type="number" placeholder="enter height of tile" id="div_height" />
+  <input type="number" placeholder="enter width of tile" id="div_width" />
+  <input type="number" placeholder="enter Cost of tile" id="div_cost" />
+  <button onclick="myFunction()" id="div_submit">Try it</button>
+
+  <p id="demo"></p>
+  <script>
+    function myFunction() {
+        let height_div = parseInt(document.getElementById('div_height').value);
+        let width_div = parseInt(document.getElementById('div_width').value);
+        let cost_div = parseInt(document.getElementById('div_cost').value);
+        var xy='',
+          size = 20;
+        var x,a = screen.availHeight;
+        var y,b = screen.availWidth;
+        var i=1;
+        var div = document.getElementById('div_height');
+                var div1 = document.getElementById('div_width');
+                        var div2 = document.getElementById('div_cost');
+                        var div3 = document.getElementById('div_submit');
+        div.parentNode.removeChild(div);
+        div1.parentNode.removeChild(div1);
+        div2.parentNode.removeChild(div2);
+        div3.parentNode.removeChild(div3);
+        for(  var x = screen.availHeight;x>height_div;x=x-height_div){
+          for(var y = screen.availWidth;y>width_div;y=y-width_div){
+            xy = xy + '<div id="myDiv" style="height:'+height_div+'px;width:'+width_div+'px">'+i+' Tile' + '</div>';
+            document.getElementById('demo').innerHTML = xy;
+            i++;
+                      //  document.getElementById('myDiv').style.height = height_div + 'px';
+        // document.getElementById('myDiv').style.width = width_div + 'px';
+          }
+        }
+        i=i-1;
+        if(i==0){
+          alert('Since there no tile is fit for that size, cost will be zero');
+          location.reload();
+        }else
+alert('Resolution of the Screen is '+ a+'*'+b+' \n Cost of All the tiles for the resolution = '+i*cost_div);
+      }
+  </script>
+</body>
+
+</html>
